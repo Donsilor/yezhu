@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/xinzeng2.css"/>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+    <title>新增2</title>
+</head>
+
+<body style="background: #D7D7D7;">
+<div class="xz1_top">
+    请选择所需物资场地
+    <a href="xinzeng1.html">上一步</a>
+</div>
+<div class="xz1_con">
+
+    <div class="wang">
+        <ul>
+            <li></li>
+            <li><b>物资名称</b></li>
+            <li><b>物资数量</b></li>
+            <li><b>物资备注</b></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li>城主饭局</li>
+            <li><input type="text"/>场</li>
+            <li><input type="text"/></li>
+            <li><span class="am-icon-xx">x</span></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li>羽毛球</li>
+            <li><input type="text"/>筒</li>
+            <li><input type="text"/></li>
+            <li><span class="am-icon-xx">x</span></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li>瓶装水</li>
+            <li><input type="text"/>箱</li>
+            <li><input type="text"/></li>
+            <li><span class="am-icon-xx">x</span></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li>恤衫</li>
+            <li><input type="text"/>件</li>
+            <li><input type="text"/></li>
+            <li><span class="am-icon-xx">x</span></li>
+        </ul>
+        <ul>
+            <li></li>
+            <li>羽毛球场</li>
+            <li><input type="text"/>个</li>
+            <li><input type="text"/></li>
+            <li><span class="am-icon-xx">x</span></li>
+        </ul>
+
+        <!--<ul>
+            <li></li>
+            <li>其他 </li>
+            <li class="xz_qt">
+                <input type="text" />
+            </li>
+            <li><span class="am-icon-xx">x</span></li>
+        </ul>	-->
+    </div>
+
+    <div class="xz2_hd">
+        <li>
+            <span>活动开始时间：</span>
+            <input type="text" id="activityStartDT" class="am-form-field" placeholder="" data-am-datepicker readonly
+                   required/>
+        </li>
+        <li>
+            <span>活动结束时间：</span>
+            <input type="text" id="activityEndDT" class="am-form-field" placeholder="" data-am-datepicker readonly
+                   required/>
+        </li>
+        <li>
+            <span>活动名称：</span>
+            <input type="text" placeholder="" id="activityName"/>
+        </li>
+        <li>
+            <span>活动类型：</span>
+            <select data-am-selected id="activityType">
+                <option value="7">文化类</option>
+                <option value="8" selected>体育竞技</option>
+                <option value="9">休闲娱乐</option>
+                <option value="10">城主饭局</option>
+            </select>
+        </li>
+
+        <li>
+            <span>活动人数：</span>
+            <input type="number" placeholder="不得少于30人" id="userQty"/>
+        </li>
+        <li>
+            <span>活动说明：</span>
+            <textarea id="description"></textarea>
+        </li>
+        <li>
+            <span>联系人：</span>
+            <input type="text" id="contactUser" placeholder=""/>
+        </li>
+        <li>
+            <span>电话：</span>
+            <input type="number" id="contactPhone" placeholder=""/>
+        </li>
+    </div>
+</div>
+<div class="xz_xieyi">
+    <h3> 城主俱乐部平台用户协议</h3>
+
+    <p>
+
+尊敬的客户，欢迎您使用“城主俱乐部”平台，在使用前请仔细阅读如下服务条款：本平台由广州利合房地产开发有限公司运营管理，并根据本协议的规定向用户提供服务。本协议双方为城主俱乐部用户与广州利合房地产开发有限公司，适用于用户使用本平台服务的全部活动。
+在使用本平台之前，请务必认真阅读并充分理解本协议全部内容。如果您对本协议的任何条款表示异议，可选择暂不发起申请，并欢迎与我们沟通联系。当您点选“同意”或发起活动赞助申请时，即视为您已仔细阅读本条款，同意接受本服务条款的所有规范，包括接受城主俱乐部对服务条款随时所做的任何修改，并愿受其约束。
+</p>
+<p>
+<b>一、用户使用规则</b><br/>
+1. 用户须按照注册要求使用真实姓名，及手机号注册。用户有义务保证密码和帐号的安全，用户利用该密码和帐号所进行的一切活动引起的任何损失或损害，由用户自行承担全部责任，本平台不承担任何责任。如用户发现帐号遭到未授权的使用或发生其他任何安全问题，应立即修改帐号密码并妥善保管，如有必要，请通知本平台。因黑客行为或用户的保管疏忽导致帐号非法使用，本平台不承担任何责任。<br/>
+2. 用户须对在城主俱乐部的注册信息的真实性、合法性、有效性承担责任，用户不得冒充他人；不得利用他人的名义发布任何申请；用户以虚假信息骗取账号名称注册，或账号头像、简介等注册信息存在违法和不良信息的，城主俱乐部将有权暂停或注销。<br/>
+3. 任何组织或个人在城主俱乐部平台提交的活动申请，不得有下列情形：<br/> 
+（一）违反宪法或法律法规规定的；<br/>
+（二）危害国家安全，泄露国家秘密，颠覆国家政权，破坏国家统一的；<br/>
+（三）损害国家荣誉和利益的，损害公共利益的；<br/>
+（四）煽动民族仇恨、民族歧视，破坏民族团结的；<br/>
+（五）破坏国家宗教政策，宣扬邪教和封建迷信的；<br/>
+（六）散布谣言，扰乱社会秩序，破坏社会稳定的；<br/>
+（七）散布淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪的；<br/>
+（八）侮辱或者诽谤他人，侵害他人合法权益的；<br/>
+（九）含有法律、行政法规禁止的其他内容的。
+</p>
+<p>
+<b>免责申明</b><br/>
+1. 用户在城主俱乐部平台发表的内容仅表明其个人的立场和观点，并不代表城主俱乐部的立场或观点。作为内容的发表者，需自行对所发表内容负责，因所发表内容引发的一切纠纷，由该内容的发表者承担全部法律及连带责任，城主俱乐部不承担任何法律及连带责任。<br/>
+2. 城主俱乐部不保证所提供的物料赞助一定能满足用户的要求，对所赞助物料的及时性、安全性、稳定性也都不作保证。<br/>
+3. 对于城主俱乐部已通过审批的活动物料赞助，仅作为双方合作参考，不具备法律责任。因不可抗力或城主俱乐部不能控制的原因造成的已批准物料赞助无法提供或部分无法提供的情况，由双方通过友好协商解决。城主俱乐部将尽力减少因此而给用户造成的损失和影响。<br/>
+5. 如用户在合作过程中，有出现不配合城主俱乐部或不利于城主俱乐部品牌形象的行为，城主俱乐部有权终止或减少对活动的赞助及支持。<br/>
+6. 本平台有权于任何时间暂时或永久修改或终止本服务(或其任何部分)；<br/>
+7. 本协议的订立、执行和解释及争议的解决均应适用中华人民共和国法律。<br/>
+8. 如本协议中的任何条款无论因何种原因完全或部分无效或不具有执行力，本协议的其余条款仍应有效并且有约束力。<br/>
+9. 本协议解释权及修订权归广州利合房地产有限公司所有。
+</p>
+<p>
+<b>协议修改</b><br/>
+1. 根据互联网的发展和有关法律、法规及规范性文件的变化，或者因业务发展需要，城主俱乐部有权对本协议的条款作出修改或变更，一旦本协议的内容发生变动，城主俱乐部将会直接在城主俱乐部平台上公布修改之后的协议内容，该公布行为视为城主俱乐部已经通知用户修改内容。<br/>
+2. 如果不同意城主俱乐部对本协议相关条款所做的修改，用户有权停止使用城主俱乐部平台。如果用户继续使用城主俱乐部平台，则视为用户接受城主俱乐部对本协议相关条款所做的修改。
+    </p>
+</div>
+<div class="xz_sure">
+    <input type="checkbox" name="" id="" value="" checked="checked"/>
+    我已确认以上条款
+</div>
+
+<a href="javascript:ActivityApplyAdd()" class="xz_next">提交</a>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    $('.wang').on('click', '.am-icon-xx', function () {
+        $(this).parent().parent().remove();
+    });
+
+    $(function () {
+        const chooseData = JSON.parse(localStorage.getItem("chooseData")) || [];
+        const activityData = JSON.parse(localStorage.getItem("activityData")) || [];
+
+        var wzList = '<ul><li></li><li><b>物资名称</b></li><li><b>物资数量</b></li><li><b>物资备注</b></li></ul>';
+
+        for (var i = 0; i < chooseData.length; i++) {
+            var item = chooseData[i];
+            var name = item.name;
+            if (name == "其他") {
+
+                var backup = item.backup;
+                for (var j = 0; j < backup.length; j++) {
+                    wzList += '<ul><li></li><li>' +
+                        name + '</li><li><input type="text" name="其他" value="' + backup + '"/></li><li></li><li><span class="am-icon-xx">x</span></li></ul>'
+                }
+
+            } else {
+                var num = item.num;
+                var unit = item.unit;
+                var backup = item.backup;
+                wzList += '<ul><li><input type="text" name="wz_name" value="' + name + '" style="display:none"/></li><li>' +
+                    name + '</li><li><input type="text" name="num_' + name + '" value="' + num + '"/>' +
+                    unit + '</li><li><input type="text" name="backup_' + name + '" value="' + backup + '"/>' +
+                    '<input type="text" name="unit_' + name + '" value="' + unit + '" style="display:none"/></li><li>' +
+                    '<span class="am-icon-xx">x</span></li></ul>'
+            }
+        }
+        $('.wang').html(wzList);
+
+        QueryActivityTypes();
+
+    });
+
+    //查询物资类型
+    function QueryActivityTypes() {
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityTypes'),
+            contentType: 'application/json',
+            data: {},
+            success: function (data) {
+                var activityType = '';
+
+                for (var i = 0; i < data.length; i++) {
+                    const d = data[i]
+                    activityType += ' <option value="' + d.Name + '">' + d.Name + '</option>'
+                }
+                $('#activityType').html(activityType)
+            },
+            error: function () {
+                toastr.error("提交失败")
+            }
+        });
+    }
+
+
+    //新增
+    function ActivityApplyAdd() {
+
+        const activityName = $('#activityName').val();
+        if (activityName == undefined || activityName == "") {
+            toastr.warning("活动名称不能为空")
+            return
+        }
+        const activityType = $('#activityType').val();
+        if (activityType == undefined || activityType == "") {
+            toastr.warning("活动类型不能为空")
+            return
+        }
+        const activityStartDT = $('#activityStartDT').val();
+        if (activityStartDT == undefined || activityStartDT == "") {
+            toastr.warning("活动开始时间不能为空")
+            return
+        }
+        const activityEndDT = $('#activityEndDT').val();
+        if (activityEndDT == undefined || activityEndDT == "") {
+            toastr.warning("活动结束时间不能为空")
+            return
+        }
+        const contactUser = $('#contactUser').val();
+        if (contactUser == undefined || contactUser == "") {
+            toastr.warning("联系人不能为空")
+            return
+        }
+        const contactPhone = $('#contactPhone').val();
+        if (contactPhone == undefined || contactPhone.length!==11) {
+            toastr.warning("请输入正确的手机号码")
+            return
+        }
+        const description = $('#description').val();
+        if (description == undefined || description == "") {
+            toastr.warning("活动说明不能为空")
+            return
+        }
+        const userQty = $('#userQty').val();
+        if (userQty == undefined || userQty < 30) {
+            toastr.warning("活动人数不能少于30人")
+            return
+        }
+
+        var goods = [];
+        $("input[name='wz_name']").each(function () {
+            const key = $(this).val();
+            const val1 = $("input[name='num_" + key + "']")
+            const val2 = $("input[name='backup_" + key + "']")
+            const val3 = $("input[name='unit_" + key + "']")
+            goods.push({
+                GoodName: key,
+                UnitName: val3[0].value,
+                Qty: val1[0].value,
+                Remark: val2[0].value
+            })
+        });
+
+        const peihe = JSON.parse(localStorage.getItem("peihe"));
+
+        const req = {
+            "AccountId": getCookie("userID") || '', //微信OpenID
+            "ActivityName": activityName,//活动名称
+            "ActivityType": activityType,
+            "ActivityStartDT": activityStartDT,  //日期格式  活动开始时间
+            "ActivityEndDT": activityEndDT, //日期格式  活动结束时间
+            "ContactUser": contactUser,
+            "ContactPhone": contactPhone,  //业主电话
+            "Description": description,//活动说明
+            "UserQty": userQty,  //活动人数
+            "AgreeRule": peihe.join(','),// 愿意配合以下操作:1.条款1 2：条款2 这里只记录编号
+            "Goods": goods,
+        }
+        console.log(req)
+        $('.xz_next').attr("href", '#');
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityApplyAdd'),
+            contentType: 'application/json',
+            data: JSON.stringify(req),
+            success: function (data) {
+                if (data.Code == 200) {
+                    toastr.success("提交成功");
+                    setTimeout(function () {
+                        location.href = "index1.html"
+                    }, 1000)
+                } else {
+		    $('.xz_next').attr("href", 'javascript:ActivityApplyAdd()');
+                    toastr.error(data.Message)
+                }
+
+            },
+            error: function () {
+		$('.xz_next').attr("href", 'javascript:ActivityApplyAdd()');
+                toastr.error("提交失败")
+            }
+        });
+    }
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/xinzeng1.css"/>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <title>新增</title>
+</head>
+
+<body style="background: #D7D7D7;">
+<div class="xz1_top">
+    请选择所需物资场地
+    <!--<a href="#">继续添加</a>-->
+</div>
+<div class="xz1_icon">
+    <!--<li class="active_on">-->
+    <!--<a href="#">-->
+    <!--<img src="images/u257.png"/>-->
+    <!--<p>全部</p>-->
+    <!--</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#">-->
+    <!--<img src="images/u143.png"/>-->
+    <!--<p>活动场地</p>-->
+    <!--</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#">-->
+    <!--<img src="images/u153.png"/>-->
+    <!--<p>宣传物料</p>-->
+    <!--</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#">-->
+    <!--<img src="images/u155.png"/>-->
+    <!--<p>设备道具</p>-->
+    <!--</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#">-->
+    <!--<img src="images/u141.png"/>-->
+    <!--<p>活动物资</p>-->
+    <!--</a>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<a href="#">-->
+    <!--<img src="images/u161.png"/>-->
+    <!--<p>其它</p>-->
+    <!--</a>-->
+    <!--</li>-->
+</div>
+
+
+<div class="xz1_con">
+
+    <div class="wang" id="wzList">
+        <ul>
+            <li></li>
+            <li><b>物资名称</b></li>
+            <li><b>物资数量</b></li>
+            <li><b>物资备注</b></li>
+        </ul>
+        <!--<ul>-->
+        <!--<li><input type="checkbox" name="wz_name"/></li>-->
+        <!--<li>羽毛球场</li>-->
+        <!--<li><input type="text"/>个</li>-->
+        <!--<li><input type="text"/></li>-->
+        <!--</ul>-->
+
+        <ul>
+            <li><input type="checkbox" name="wz_name" class="radio"/></li>
+            <li style="width: 15%;">其他</li>
+            <li class="xz_qt">
+                <p><input type="text"/><span class="am-icon-add"> +</span></p>
+            </li>
+        </ul>
+    </div>
+
+    <div class="xz_peihe">
+        <p>如果您愿意配合以下操作，将有助于提高方案通过率：</p>
+        <li class="c_radio"><input type="checkbox" checked name="type" id="peihe1" class="radio"><label for="a"
+                                                                                                        class="radio">在朋友圈发布相关宣传海报/微推/照片；</label>
+        </li>
+        <li class="c_radio"><input type="checkbox" checked name="type" id="peihe2" class="radio"><label for="a"
+                                                                                                        class="radio">推介亲友注册凤凰通；</label>
+        </li>
+        <li class="c_radio"><input type="checkbox" checked name="type" id="peihe3" class="radio"><label for="a"
+                                                                                                        class="radio">推荐亲友到访销售中心，并注册积分宝；</label>
+        </li>
+    </div>
+    <div class="xz_yx">
+        已选<span>0</span>项
+    </div>
+</div>
+
+
+<a href="#" class="xz_next" onclick="nextStep()">下一步</a>
+
+<script src="js/common.js"></script>
+<script>
+    var goods = {}
+    var num = 0;
+    $(function () {
+        getActivityGoods();
+    });
+
+    $('#wzList').delegate('.am-icon-add', 'click', function () {
+        var num = $('.xz_qt').find('p').length;
+        if (num >= 4) {
+            alert('最多添加4个！');
+        } else {
+            $('.xz_qt').append('<p><input type="text" name="其他" /><span class="am-icon-add"> +</span><span class="am-icon-xx">x</span></p>');
+        }
+    });
+
+    $('#wzList').delegate('.am-icon-xx', 'click', function () {
+        $(this).parent().remove();
+    });
+
+    $('#wzList').delegate('input[type="checkbox"]', 'click', function () {
+        if ($(this).is(':checked')) {
+            num += 1
+        } else {
+            num -= 1
+        }
+
+        $('.xz_yx span').text(num);
+    })
+
+    function nextStep() {
+        var chooseData = [];
+        $("input[name='wz_name']").each(function () {
+            if ($(this).is(':checked')) {
+                const key = $(this).val();
+                if (key === "其他") {
+                    const others = []
+                    $('input[name="其他"]').each(function () {
+                        others.push($(this)[0].value)
+                    })
+                    chooseData.push({name: key, backup: others})
+                } else {
+                    const val1 = $("input[name='" + key + "']")
+                    const val2 = $("input[name='detail_" + key + "']")
+                    const val3 = $("input[name='unit_" + key + "']")
+                    chooseData.push({name: key, num: val1[0].value, backup: val2[0].value, unit: val3[0].value})
+                }
+            }
+        });
+        localStorage.setItem("chooseData", JSON.stringify(chooseData));
+
+        var peihe = [];
+        if ($('#peihe1').is(':checked')) {
+            peihe.push(1);
+        }
+        if ($('#peihe2').is(':checked')) {
+            peihe.push(2);
+        }
+        if ($('#peihe3').is(':checked')) {
+            peihe.push(3);
+        }
+        localStorage.setItem("peihe", JSON.stringify(peihe));
+
+        location.href = "xinzeng2.html";
+    }
+
+    //查询物资类型
+    function getActivityGoods() {
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityGoods'),
+            contentType: 'application/json',
+            data: {},
+            success: function (data) {
+                const d = data;
+                goods = data;
+                console.log(d)
+                var activityGoodTypesList = '<li class="active_on"><a href="#" onclick="changeActivityGoodType(\'全部\')"><img src="images/u155.png"/><p>全部</p></a></li>';
+                for (var i = 0; i < d.length; i++) {
+                    var item = d[i];
+                    var name = item.Name;
+                    var icon = item.IconName;
+                    activityGoodTypesList += '<li><a href="#" onclick="changeActivityGoodType(\'' + name.trim(" ") + '\')"><img src=\"' +
+                        icon + '\"/><p>' + name + '</p></a></li>';
+                }
+
+                $(".xz1_icon").html(activityGoodTypesList);
+
+                $('.xz1_icon li').click(function () {
+                    var i = $(this).index();//下标第一种写法
+                    console.log('================', i)
+                    //var i = $('tit').index(this);//下标第二种写法
+                    $(this).addClass('active_on').siblings().removeClass('active_on');
+                    //$('.show_tab .show_tabs').eq(i).show().siblings().hide();
+                });
+
+                const activityGoodType = localStorage.getItem("activityGoodType");
+                if (activityGoodType != undefined && activityGoodType != null && activityGoodType != "") {
+                    changeActivityGoodType(activityGoodType);
+                } else {
+                    changeActivityGoodType('全部');
+                }
+
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+
+    function changeActivityGoodType(type) {
+        console.log('========', type)
+        localStorage.setItem("activityGoodType", type);
+        var wzList = '<ul><li></li><li><b>物资名称</b></li><li><b>物资数量</b></li><li><b>物资备注</b></li></ul>';
+        for (var i = 0; i < goods.length; i++) {
+            const d = goods[i];
+            //console.log(d.Name == type,d.Name, type)
+            if (d.Name == type || type == "全部") {
+                var ActivityGoods = [];
+                if (type == "全部") {
+                    for (var j = 0; j < goods.length; j++) {
+                        ActivityGoods = ActivityGoods.concat(goods[j].ActivityGoods)
+                    }
+                } else {
+                    ActivityGoods = d.ActivityGoods;
+                }
+                for (var j = 0; j < ActivityGoods.length; j++) {
+                    var item = ActivityGoods[j];
+                    var name = item.GoodName;
+                    var unit = item.UnitName;
+
+                    wzList += '<ul><li><input type="checkbox" class="radio" name="wz_name" value="' + name + '"/></li><li>' +
+                        name + '</li><li>' +
+                        '<input type="number" name="' + name + '"/>' +
+                        unit + '</li><li><input type="text" name="detail_' + name + '"/>' +
+                        '<input type="text" name="unit_' + name + '" value="' + unit + '" style="display:none" /></li></ul>'
+                }
+            }
+            localStorage.setItem("activityData", JSON.stringify(d));
+        }
+
+        wzList += '<ul><li><input type="checkbox" name="wz_name" class="radio"  value="其他"/></li>' +
+            '<li style="width: 15%;">其他</li>' +
+            '<li class="xz_qt"><p><input type="text" name="其他"/><span class="am-icon-add"> +</span></p></li></ul>'
+
+        $("#wzList").html(wzList);
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+.s_sq{
+	width: 100%;
+	height: 4rem;
+	line-height:4rem;
+	font-size: 1.2rem;
+	box-sizing: border-box;
+	padding: 0 .5rem;
+	
+}
+.s_sq a{
+	float: right;
+}
+
+.s_tab{
+	width: 100%;
+	height: 4rem;
+	line-height: 4rem;
+	border-bottom: 1px solid #999;
+}
+.s_tab li{
+	width: 20%;
+	text-align: center;
+	height: 4rem;
+	line-height: 4rem;
+	font-size: 1.2rem;
+	cursor: pointer;
+	float: left;
+}
+.s_tab_active{
+	color: #DAA520;
+}
+
+.s_tabss{
+	width: 100%;
+	height: auto;
+	min-height: 3rem;
+	overflow: hidden;
+	padding:.5rem;
+} 
+.nolist{ width:100%; padding:2rem 0; height:6rem; line-height:2rem; text-align:center; font-size:1rem; color:#666; background:#FFF;}
+
+.s_tabss ul{
+	width: 100%;
+	height: 6rem;
+	background: #fff;
+	margin-bottom: .5rem;
+	padding: 0 .5rem;
+	
+}
+.s_tabss ul li{
+	float: left;
+}
+.s_tabss ul li:nth-child(1){
+	width: 25%;
+	text-align: left;
+}
+
+.s_tabss ul li:nth-child(2){
+	width: 50%;
+	text-align: center;
+}
+.s_tabss ul li:nth-child(3){
+	width: 25%;
+	text-align: right;
+}
+.s_tabss ul li p{
+	height: 3rem;
+	font-size: 1.2rem;
+	line-height: 3rem;
+	margin: 0;
+}
+.s_tabss  ul a li{
+	color: #000;
+} 
+
+.s_gao{
+	width: 95%;
+	margin: 0 auto;
+	margin-top: 2rem;
+	border: 1px solid #999;
+	background: #fff;
+	position: relative;
+	font-size: 1.2rem;
+	line-height:2.5rem ;
+	padding: 0 .5rem;
+	margin-bottom: 2rem;
+}
+.s_gao h5{
+	text-align: center;
+	font-size: 1.2rem;
+	line-height:2.8rem ;
+	font-weight: 500;
+	margin: 0;
+	margin: 3px auto;
+}
+.s_gao h4{
+	text-align: center;
+	font-size: 1.4rem;
+	line-height:2.8rem ;
+	font-weight: 500;
+	margin: 5px auto;
+}
+.s_gao p{
+	text-align: left;
+	text-indent: 25px;
+	margin: 5px auto;
+}

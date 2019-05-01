@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <title>城主俱乐部</title>
+</head>
+
+<body style="background: #D7D7D7;">
+<!--banner-->
+<div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}'>
+    <ul class="am-slides">
+               <li>
+				<img src="images/banner1.jpg">
+				</li>
+				<li>
+					<img src="images/banner2.jpg">
+				</li>
+				<li>
+					<img src="images/banner3.jpg">
+				</li>
+				<li>
+					<img src="images/banner4.jpg">
+				</li>
+                <li>
+					<img src="images/banner5.jpg">
+		</li>
+    </ul>
+</div>
+
+<div class="s_sq">
+    我的申请
+    <a href="xinzeng1.html">新增</a>
+</div>
+
+<div class="s_tab">
+    <li class="s_tab_active">全部</li>
+    <li>审核中</li>
+    <li>已驳回</li>
+    <li>待签收</li>
+    <li>已完成</li>
+</div>
+
+<div class="s_tabs">
+    <div class="s_tabss">
+        
+    </div>
+</div>
+
+</div>
+
+<div class="s_gao">
+    <h4>温馨提示</h4>
+    <p>
+        尊敬的城主，为更好的保证活动的顺利执行，如需我司在活动前提供物料赞助或垫支费用，需要您在申请审批通过后三天内提交费用总金额10%的保证金，待活动验收完成后，我们将第一时间无息返还给您。如该活动由您提前垫支费用，则不需缴纳保证金。</p>
+    <h5>服务热线：020-84888236</h5>
+    <h5>工作时间：09:00-18:00</h5>
+</div>
+
+<script src="js/common.js"></script>
+<script>
+    $('.s_tab li').click(function () {
+        var i = $(this).index();//下标第一种写法
+        //var i = $('tit').index(this);//下标第二种写法
+        $(this).addClass('s_tab_active').siblings().removeClass('s_tab_active');
+        $('.s_tabs .s_tabss').eq(i).show().siblings().hide();
+        if ($(this).text()=="审核中") {
+            getActivityList('待审核');
+        }else{
+            getActivityList($(this).text());
+        }
+    });
+
+    getActivityList();
+
+
+    //获取活动详情列表
+    function getActivityList(activitystatus) {
+        const req = {
+            UserType: getCookie('userType'),
+            UserID: getCookie('userID'),
+            activitystatus: activitystatus||'',
+            page: 1,
+            pagesize: 10,
+        }
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityList'),
+            contentType: 'application/json',
+            dataType: 'json',
+            data: JSON.stringify(req),
+            success: function (data) {
+                //var realData = JSON.parse(data);
+                const d = data;
+                console.log(d)
+                var activityList = '';
+                for (var i = 0; i < d.Result.length; i++) {
+                    var item = d.Result[i];
+                    var linkUrl = "detail.html?id=" + item.Id;
+                    var ActivityName = item.ActivityName;
+                    var ActivityType = item.ActivityType;
+                    var startTime = (item.ActivityStartDT||'').slice(0, 10);
+                    var endTime = (item.ActivityEndDT||'').slice(0, 10);
+                    var statusTxt = '';
+                    var status = item.Status;
+
+                    //activity.status 1=待审标志 2=初审通过，等待复审
+                    // 3=复审通过，等待终身
+                    // 4=待验收
+                    // 5=已完成
+                    // -1-已驳回
+                    if (status == '1') {
+                        statusTxt = "待审核"
+                    } else if (status == '2'||status == '3') {
+                        statusTxt = "审核中"
+                    } else if (status == '4') {
+                        statusTxt = '待签收'
+                    } else if (status == '5') {
+                        statusTxt = '已完成'
+                    } else if (status == '-1') {
+                        statusTxt = '已驳回'
+                    }
+
+                    activityList += '<ul><a href="'
+                        + linkUrl + '"><li><p>'
+                        + startTime + '</p><p>'
+                        + ActivityType + '</p></li><li><p>'
+                        + ActivityName + '</p><p>'
+                        + startTime + '~' + endTime + '</p></li><li><p style="color: #FF0000;">'
+                        + statusTxt + '</p><p style="color: #0e90d2;">详情</p></li></a></ul>';
+                }
+
+                if (activityList=="") {
+                    activityList = '<div class="nolist">------当前暂无申请单哦-----</div>'
+                }
+
+                $(".s_tabss").html(activityList);
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+</script>
+
+</body>
+
+</html>

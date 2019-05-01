@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/shenhe_login.css"/>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+    <title>审核登陆</title>
+</head>
+
+<body style="background: #D7D7D7;">
+
+<div class="login_con" style="margin-top: 2rem;">
+    <li>
+        <font><i class="am-icon-user"></i>
+            <span>用户名：</span></font>
+        <input id="name" type="text" placeholder="请填写用户名" value="cs001"/>
+    </li>
+    <li>
+        <font><i class="am-icon-lock"></i>
+            <span>密码：</span></font>
+        <input id="password" type="password" placeholder="请输入密码" value="123456"/>
+    </li>
+</div>
+
+<button class="next_btm" onclick="login()">下一步</button>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="js/common.js"></script>
+<script>
+    function login() {
+
+        const openid = getCookie('openid')
+
+        const name = $('#name').val();
+        if (name==undefined||name=="") {
+            toastr.warning("用户名不能为空")
+            return
+        }
+        const password = $('#password').val();
+        if (password==undefined||password=="") {
+            toastr.warning("密码不能为空")
+            return
+        }
+
+        const req = {
+            "name": name,
+            "password": password,
+            "openid": openid||''
+        }
+        console.log(req)
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ShenHeLogin'),
+            contentType: 'application/json',
+            data: JSON.stringify(req),
+            success: function (data) {
+                if (data.Code == 200){
+                    toastr.success("提交成功")
+                    setCookie("userID", data.UserID);
+                    setCookie("user", JSON.stringify(data));
+                    setTimeout(function () {
+                        location.href = "auditIndex.html"
+                    }, 3000)
+                } else {
+                    toastr.error(data.Message)
+                }
+
+            },
+            error: function () {
+                toastr.error("提交失败")
+            }
+        });
+    }
+
+</script>
+</html>

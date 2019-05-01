@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/sh_index.css"/>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+    <title>城主俱乐部</title>
+</head>
+
+<body style="background: #D7D7D7;">
+<!--banner-->
+<div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}'>
+    <ul class="am-slides">
+        <li>
+					<img src="images/banner1.jpg">
+
+				</li>
+				<li>
+					<img src="images/banner2.jpg">
+
+				</li>
+				<li>
+					<img src="images/banner3.jpg">
+
+				</li>
+				<li>
+					<img src="images/banner4.jpg">
+
+				</li>
+                <li>
+					<img src="images/banner5.jpg">
+
+				</li>
+    </ul>
+</div>
+
+<div class="s_tab">
+    <li>全部</li>
+    <li class="s_tab_active">待审核</li>
+    <li>审核中</li>
+    <li>待验收</li>
+    <li>已完成</li>
+</div>
+
+<div class="s_tabs">
+    <div class="s_tabss">
+        
+    </div>
+    <!--2-->
+    <div class="s_tabss" style="display: none;">
+       
+    </div>
+    <!--3-->
+    <div class="s_tabss" style="display: none;">
+        
+    </div>
+    <!--4-->
+    <div class="s_tabss" style="display: none;">
+        
+    </div>
+    <!--5-->
+    <div class="s_tabss" style="display: none;">
+        
+    </div>
+</div>
+
+
+<script src="js/common.js"></script>
+<script>
+    var userID = getQueryString('userID')||getCookie('userID')
+    var openid = getQueryString('openid')||getCookie('openid')
+    var userName = getQueryString('userName')||getCookie('userName')
+    var userType = getQueryString('userType')||getCookie('userType')
+	if (userID !=null) {
+		setCookie('userID', userID)
+		setCookie('openid', openid)
+		setCookie('userType', userType)
+		setCookie('user', JSON.stringify({userID: userID, openid: openid, userName: userName, userType: userType}))
+	}
+    getActivityList();
+
+    $('.s_tab li').click(function () {
+        var i = $(this).index();//下标第一种写法
+        //var i = $('tit').index(this);//下标第二种写法
+        $(this).addClass('s_tab_active').siblings().removeClass('s_tab_active');
+        $('.s_tabs .s_tabss').eq(i).show().siblings().hide();
+        getActivityList($(this).text());
+    });
+
+
+    //获取活动详情列表
+    function getActivityList(activitystatus, page) {
+        const openid = getCookie("openid")
+        const req = {
+            UserID: userID,
+            UserType: userType,
+            activitystatus: activitystatus || '待审核',
+            page: page||1,
+            pagesize: 10,
+        }
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityList'),
+            contentType: 'application/json',
+            data: JSON.stringify(req),
+            success: function (data) {
+                //var realData = JSON.parse(data);
+                const d = data;
+                const p = data.Pagination;
+                console.log(d, p)
+                var activityList = '';
+                for (var i = 0; i < d.Result.length; i++) {
+                    var item = d.Result[i];
+                    var linkUrl = "auditDetail.html?id=" + item.Id;
+                    var ActivityName = item.ActivityName;
+                    var ActivityType = item.ActivityType;
+                    var startTime = item.ActivityStartDT.slice(0, 10);
+                    var endTime = item.ActivityEndDT.slice(0, 10);
+					var sqname = item.ContactUser;
+					var sqtel = item.ContactPhone;
+                    var statusTxt = "";
+                    var status = item.Status;
+                    //activity.status 1=待审标志 2=初审通过，等待复审
+                    // 3=复审通过，等待终身
+                    // 4=待验收
+                    // 5=已完成
+                    // -1-已驳回
+                    if (status == '1') {
+                        statusTxt = "待审核"
+                    } else if (status == '2') {
+                        statusTxt = userType == '1' ? "审核中" : (userType == '2' || userType == '3') ? "待审核" : ''
+                    } else if (status == '3') {
+                        statusTxt = (userType == '1' || userType == '2') ? "审核中" : userType == '3' ? "待审核" : ''
+                    } else if (status == '4') {
+                        statusTxt = '待验收'
+                    } else if (status == '5') {
+                        statusTxt = '已完成'
+                    } else if (status == '-1') {
+                        statusTxt = '已驳回'
+                    }
+
+                    activityList += '<ul><a href="'
+                        + linkUrl + '"><li><p>'
+                        + startTime + '</p><p>'
+                        + sqname + '</p></li><li><p>'
+                        + ActivityName + '</p><p>'
+                        + sqtel + '</p></li><li><p style="color: #FF0000;">'
+                        + statusTxt + '</p><p style="color: #0e90d2;">详情</p></li></a></ul>';
+                }
+
+                if (activityList=="") {
+                    activityList = '<ul><li>------当前暂无申请单哦-----</li></ul>'
+                } else {
+
+                    const current = p.Current;
+                    const total = parseInt(p.Total / p.PageSize) +1 ;
+
+                    var pagination = '<div id="pages">';
+
+                    if (current===1) {
+                        pagination += '<a href="javascript:;" class="">上一页</a>'
+                    } else {
+                        pagination += '<a href="javascript:;" class="prapag" onclick="getActivityList(\''+req.activitystatus+'\','+(current-1)+')">上一页</a>'
+                    }
+
+                    for (var i=0; i<total; i++) {
+                        const t = i+1;
+                        if (current===i+1) {
+                            pagination += '<a href="javascript:;" class="aticpag">'+t+'</a>';
+                        } else {
+                            pagination += '<a href="javascript:;" onclick="getActivityList(\''+req.activitystatus+'\','+t+')">'+t+'</a>';
+                        }
+                    }
+
+
+                    if (current===total) {
+                        pagination += '<a href="javascript:;" class="">下一页</a>'
+                    } else {
+                        pagination += '<a href="javascript:;" class="nexpag" onclick="getActivityList(\''+req.activitystatus+'\','+(current+1)+')">下一页</a>'
+                    }
+                    activityList +=pagination
+                }
+
+                $(".s_tabss").html(activityList);
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+</script>
+
+</body>
+
+</html>

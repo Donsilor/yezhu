@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/xiangqing.css"/>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+</head>
+
+<body style="background: #D7D7D7;">
+<!--<div class="s_tab">-->
+<!--<li class="s_tab_active">待审核</li>-->
+<!--<li>已驳回</li>-->
+<!--<li>待签收</li>-->
+<!--<li>已完成</li>-->
+<!--</div>-->
+
+<div class="show_tab">
+    <!--1-->
+    <!--<div class="show_tabs">-->
+
+    <!--<div class="s_tabss">-->
+    <!--<ul>-->
+    <!--<a>-->
+    <!--<li>-->
+    <!--<p>20180520</p>-->
+    <!--<p>体育</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<p>羽毛球比赛</p>-->
+    <!--<p>2018.5.30-2018.5.31</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<p style="color: #FF0000;">待审核</p>-->
+    <!--</li>-->
+    <!--</a>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <!--<div class="xz_show">-->
+    <!--<p>活动说明：为鼓励业主锻炼身体，建立良好邻里关系，申请举办羽毛球友谊赛</p>-->
+    <!--<p>活动人数：50人</p>-->
+    <!--<p>所需物资：</p>-->
+    <!--<div class="wang">-->
+    <!--<ul>-->
+
+    <!--<li><b>物资名称</b></li>-->
+    <!--<li><b>物资数量</b></li>-->
+    <!--<li><b>物资备注</b></li>-->
+    <!--</ul>-->
+    <!--<ul>-->
+
+    <!--<li>城主饭局</li>-->
+    <!--<li><span>1</span>场</li>-->
+    <!--<li>备注</li>-->
+    <!--</ul>-->
+    <!--<ul>-->
+
+    <!--<li>太阳伞</li>-->
+    <!--<li><span>20</span>顶</li>-->
+    <!--<li>备注</li>-->
+    <!--</ul>-->
+    <!--<ul>-->
+
+    <!--<li>城主饭局</li>-->
+    <!--<li><span>1</span>场</li>-->
+    <!--<li>备注</li>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <!--<div class="xz_peihe">-->
+    <!--<p>愿意配合事项：</p>-->
+    <!--<li class="c_radio"><input type="checkbox" name="type" id="" class="radio" disabled="disabled"-->
+    <!--checked="checked"><label for="a" class="radio">在朋友圈发布相关宣传海报/微推/照片；</label>-->
+    <!--</li>-->
+    <!--<li class="c_radio"><input type="checkbox" name="type" id="" class="radio" disabled="disabled"><label-->
+    <!--for="a" class="radio">推介亲友注册凤凰通；</label></li>-->
+    <!--<li class="c_radio"><input type="checkbox" name="type" id="" class="radio" disabled="disabled"-->
+    <!--checked="checked"><label for="a" class="radio">推介亲友注册凤凰通；</label></li>-->
+    <!--</div>-->
+
+    <!--</div>-->
+
+
+    <!--</div>-->
+    <!--&lt;!&ndash;2已驳回&ndash;&gt;-->
+    <!--<div class="show_tabs" style="display: none;">-->
+
+    <!--<div class="s_tabss">-->
+    <!--<ul>-->
+    <!--<a>-->
+    <!--<li>-->
+    <!--<p>20180520</p>-->
+    <!--<p>体育</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<p>羽毛球比赛</p>-->
+    <!--<p>2018.5.30-2018.5.31</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<p style="color: #FF0000;">已驳回</p>-->
+    <!--</li>-->
+    <!--</a>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <!--<div class="xz_show">-->
+    <!--<p>活动说明：为鼓励业主锻炼身体，建立良好邻里关系，申请举办羽毛球友谊赛</p>-->
+    <!--<p>活动人数：50人</p>-->
+    <!--<p>所需物资：</p>-->
+    <!--<div class="wang">-->
+    <!--<ul>-->
+
+    <!--<li><b>物资名称</b></li>-->
+    <!--<li><b>物资数量</b></li>-->
+    <!--<li><b>物资备注</b></li>-->
+    <!--</ul>-->
+    <!--<ul>-->
+
+    <!--<li>城主饭局</li>-->
+    <!--<li><span>1</span>场</li>-->
+    <!--<li>备注</li>-->
+    <!--</ul>-->
+    <!--<ul>-->
+
+    <!--<li>太阳伞</li>-->
+    <!--<li><span>20</span>顶</li>-->
+    <!--<li>备注</li>-->
+    <!--</ul>-->
+    <!--<ul>-->
+
+    <!--<li>城主饭局</li>-->
+    <!--<li><span>1</span>场</li>-->
+    <!--<li>备注</li>-->
+    <!--</ul>-->
+    <!--<p>驳回原因：*********</p>-->
+    <!--</div>-->
+
+    <!--<div class="xz_peihe">-->
+    <!--<p>愿意配合事项：</p>-->
+    <!--<li class="c_radio"><input type="checkbox" name="type" id="" class="radio" disabled="disabled"-->
+    <!--checked="checked"><label for="a" class="radio">在朋友圈发布相关宣传海报/微推/照片；</label>-->
+    <!--</li>-->
+    <!--<li class="c_radio"><input type="checkbox" name="type" id="" class="radio" disabled="disabled"><label-->
+    <!--for="a" class="radio">推介亲友注册凤凰通；</label></li>-->
+    <!--<li class="c_radio"><input type="checkbox" name="type" id="" class="radio" disabled="disabled"-->
+    <!--checked="checked"><label for="a" class="radio">推介亲友注册凤凰通；</label></li>-->
+    <!--</div>-->
+
+    <!--</div>-->
+
+
+    <!--</div>-->
+
+    <!--&lt;!&ndash;3代签收&ndash;&gt;-->
+
+    <!--<div class="show_tabs" style="display: none;">-->
+
+    <!--<div class="s_tabss">-->
+    <!--<ul>-->
+    <!--<a>-->
+    <!--<li>-->
+    <!--<p>20180520</p>-->
+    <!--<p>体育</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<p>羽毛球比赛</p>-->
+    <!--<p>2018.5.30-2018.5.31</p>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--<p style="color: #FF0000;">待签收</p>-->
+    <!--</li>-->
+    <!--</a>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <!--<div class="xz_show">-->
+    <!--<p>活动说明：为鼓励业主锻炼身体，建立良好邻里关系，申请举办羽毛球友谊赛</p>-->
+    <!--<p>活动人数：50人</p>-->
+    <!--<p>所需物资：</p>-->
+    <!--<div class="wang wang2">-->
+    <!--<ul>-->
+    <!--<li><b>物资名称</b></li>-->
+    <!--<li><b>物资数量</b></li>-->
+    <!--<li><b>物资备注</b></li>-->
+    <!--<li></li>-->
+    <!--</ul>-->
+    <!--<ul>-->
+
+    <!--<li>城主饭局</li>-->
+    <!--<li><span>1</span>场</li>-->
+    <!--<li>备注</li>-->
+    <!--<li class="bohui"><span>已签收</span></li>-->
+    <!--</ul>-->
+    <!--<ul>-->
+
+    <!--<li>太阳伞</li>-->
+    <!--<li><span>20</span>顶</li>-->
+    <!--<li>备注</li>-->
+    <!--<li class="bohui"><a>签收</a></li>-->
+    <!--</ul>-->
+    <!--<ul>-->
+    <!--<li>城主饭局</li>-->
+    <!--<li><span>1</span>场</li>-->
+    <!--<li>备注</li>-->
+    <!--<li class="bohui"><span>已签收</span></li>-->
+    <!--</ul>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;上传缩略图&ndash;&gt;-->
+    <!--<div id="imgPreview"></div>-->
+
+    <!--<div class="am-form-group am-form-file">-->
+    <!--<button type="button" class="am-btn am-btn-default am-btn-sm">-->
+    <!--<i class="am-icon-cloud-upload"></i> 请上传图片-->
+    <!--</button>-->
+    <!--<input type="file" onchange="previewFile()" multiple>-->
+    <!--</div>-->
+
+    <!--<div class="xz_peihe">-->
+    <!--<p>愿意配合事项：</p>-->
+    <!--<li class="c_radio"><input type="checkbox" name="type" id="" class="radio" disabled="disabled"-->
+    <!--checked="checked"><label for="a" class="radio">在朋友圈发布相关宣传海报/微推/照片；</label>-->
+    <!--</li>-->
+    <!--<li class="c_radio"><input type="checkbox" name="type" id="" class="radio" disabled="disabled"><label-->
+    <!--for="a" class="radio">推介亲友注册凤凰通；</label></li>-->
+    <!--<li class="c_radio"><input type="checkbox" name="type" id="" class="radio" disabled="disabled"-->
+    <!--checked="checked"><label for="a" class="radio">推介亲友注册凤凰通；</label></li>-->
+    <!--</div>-->
+
+    <!--</div>-->
+
+
+    <!--</div>-->
+    <!--已完成-->
+    <div class="show_tabs">
+
+        <div class="s_tabss">
+            <!--<ul>-->
+                <!--<a>-->
+                    <!--<li>-->
+                        <!--<p>20180520</p>-->
+                        <!--<p>体育</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<p>羽毛球比赛</p>-->
+                        <!--<p>2018.5.30-2018.5.31</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<p style="color: #FF0000;">已完成</p>-->
+                    <!--</li>-->
+                <!--</a>-->
+            <!--</ul>-->
+        </div>
+
+        <div class="xz_show">
+            <p id="description">活动说明：为鼓励业主锻炼身体，建立良好邻里关系，申请举办羽毛球友谊赛</p>
+            <p id="userQty">活动人数：50人</p>
+            <p>所需物资：</p>
+            <div class="wang wang2" id="wzList">
+                <ul>
+
+                    <li><b>物资名称</b></li>
+                    <li><b>物资数量</b></li>
+                    <li><b>物资备注</b></li>
+                    <li></li>
+                </ul>
+                <!--<ul>-->
+
+                    <!--<li>城主饭局</li>-->
+                    <!--<li><span>1</span>场</li>-->
+                    <!--<li>备注</li>-->
+                    <!--<li class="bohui2"><span>已签收</span></li>-->
+                <!--</ul>-->
+                <!--<ul>-->
+
+                    <!--<li>太阳伞</li>-->
+                    <!--<li><span>20</span>顶</li>-->
+                    <!--<li>备注</li>-->
+                    <!--<li class="bohui2"><font>未签收</font></li>-->
+                <!--</ul>-->
+                <!--<ul>-->
+                    <!--<li>城主饭局</li>-->
+                    <!--<li><span>1</span>场</li>-->
+                    <!--<li>备注</li>-->
+                    <!--<li class="bohui2"><span>已签收</span></li>-->
+                <!--</ul>-->
+
+
+            </div>
+
+
+            <!--上传缩略图-->
+            <!--<div id="imgPreview">-->
+            <!--<img src="images/u114.jpg"/>-->
+            <!--<img src="images/u114.jpg"/>-->
+            <!--<img src="images/u114.jpg"/>-->
+            <!--<img src="images/u114.jpg"/>-->
+            <!--</div>-->
+
+
+            <div class="xz_peihe">
+                <p>愿意配合事项：</p>
+                <li class="c_radio"><input type="checkbox" name="type" id="radio1" class="radio" disabled="disabled"
+                                           checked="checked"><label for="a" class="radio">在朋友圈发布相关宣传海报/微推/照片；</label>
+                </li>
+                <li class="c_radio"><input type="checkbox" name="type" id="radio2" class="radio"
+                                           disabled="disabled"><label
+                        for="a" class="radio">推介亲友注册凤凰通；</label></li>
+                <li class="c_radio"><input type="checkbox" name="type" id="radio3" class="radio" disabled="disabled"
+                                           checked="checked"><label for="a" class="radio">推荐亲友到访销售中心，并注册积分宝；</label></li>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--切换js-->
+<script>
+    $('.s_tab li').click(function () {
+        var i = $(this).index();//下标第一种写法
+        //var i = $('tit').index(this);//下标第二种写法
+        $(this).addClass('s_tab_active').siblings().removeClass('s_tab_active');
+        $('.show_tab .show_tabs').eq(i).show().siblings().hide();
+    });
+</script>
+
+<!--上传缩略图JS-->
+<script src="js/common.js"></script>
+<script type="text/javascript">
+    function previewFile() {
+        var file = document.querySelector('input[type=file]').files[0];
+        const reader = new FileReader();
+        if (!reader) {
+            return;
+        }
+        ;
+        console.log(file)
+        var objUrl = getObjectURL(file);
+        if (objUrl) {
+            var objUrl = String(objUrl);
+            var img = '<img style="width: 50px" src="' + objUrl + '"/>';
+            $('#imgPreview').append(img);
+        }
+
+        var fd = new FormData();
+        fd.append('file', file);
+        fd.append("activityid", getQueryString('id'));
+        $.ajax({
+            url: "http://eubest.com.cn:8005/api/ActivityCenter/ImgUpload",
+            type: "POST",
+            data: fd,
+            processData: false,
+            contentType: false
+        });
+    }
+
+
+    getActivityApplyGet();
+    
+    function ActivityGoodCheck(goodId) {
+        const req =  {
+            "UserID":getCookie("userID"),//微信OpenID
+            "ActivityId":getQueryString("id") , //活动ID
+            "ActivityApplyGoodId": goodId ,//活动物资明细ID
+        }
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityGoodCheck'),
+            contentType: 'application/json',
+            data: JSON.stringify(req),
+            success: function (data) {
+                if (data.Code==200) {
+                    toastr.success("签收成功");
+                    getActivityApplyGet();
+                } else {
+                    toastr.warning(data.Message)
+                }
+            },
+            error: function () {
+                toastr.warning(data.Message)
+            }
+        })
+    }
+
+
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+    //获取单个活动信息
+    function getActivityApplyGet() {
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityApplyGet'),
+            contentType: 'application/json',
+            data: JSON.stringify({"activityId": getQueryString('id')}),
+            success: function (data) {
+
+
+                const d = data.Result;
+                console.log(d)
+
+                var activityList = '';
+
+                var ActivityName = d.ActivityName;
+                var ActivityType = d.ActivityType;
+                var startTime = d.ActivityStartDT.slice(0, 10);
+                var endTime = d.ActivityEndDT.slice(0, 10);
+                var _status = d.Status;
+                var status = "";
+                var description = d.Description;
+                var userQty = d.UserQty;
+                var goods = d.Goods;
+                var agree = d.AgreeRule;
+
+                if (_status == '1') {
+                    status = "待审核"
+                } else if (_status == '2') {
+                    status = userType == '1' ? "审核中" : (userType == '2' || userType == '3') ? "待审核" : ''
+                } else if (_status == '3') {
+                    status = (userType == '1' || userType == '2') ? "审核中" : userType == '3' ? "待审核" : ''
+                } else if (_status == '4') {
+                    status = '待签收'
+                } else if (_status == '5') {
+                    status = '已完成'
+                } else if (_status == '-1') {
+                    status = '已驳回'
+                }
+
+
+                activityList += '<ul><a><li><p>' +
+                    startTime + '</p><p>' +
+                    ActivityType + '</p></li><li><p>' +
+                    ActivityName + '</p><p>' +
+                    startTime + '~' + endTime + '</p></li><li><p style="color: #FF0000;">' +
+                    status + '</p></li></a></ul>';
+
+                $(".s_tabss").html(activityList);
+
+                $("#description").text("活动说明：" + description)
+                $("#userQty").text("活动人数：" + userQty + "人")
+
+
+                var wzList = '<ul><li><b>物资名称</b></li><li><b>物资数量</b></li><li><b>物资备注</b></li><li></li></ul>';
+                for (var i = 0; i < goods.length; i++) {
+                    const m = goods[i];
+                    if (status == "待审核") {
+                        wzList += '<ul><li>' +
+                            m.GoodName + '</li><li><span>' +
+                            m.Qty + '</span>' +
+                            m.UnitName + '</li><li>' +
+                            m.Remark + '</li></ul>'
+                    }
+                    if (status == "已驳回") {
+                        wzList += '<ul><li>' +
+                            m.GoodName + '</li><li><span>' +
+                            m.Qty + '</span>' +
+                            m.UnitName + '</li><li>' +
+                            m.Remark + '</li></ul>'
+
+                        if (i == goods.length - 1 || goods.length == 0) {
+                            wzList += '<p>驳回原因：*************</p>'
+                        }
+                    }
+                    if (status == "待签收") {
+                        wzList += '<ul><li>' +
+                            m.GoodName + '</li><li><span>' +
+                            m.Qty + '</span>' +
+                            m.UnitName + '</li><li>' +
+                            m.Remark + '</li>';
+                        if (m.CheckStatus == '未签收') {
+                            wzList += '<li class="bohui" onclick="ActivityGoodCheck('+m.Id+')"><a>签收</a></li></ul>'
+                        } else {
+                            wzList +=  '<li class="bohui"><span>' +
+                            m.CheckStatus + '</span></li></ul>'
+                        }
+                        if (i == goods.length - 1 || goods.length == 0) {
+                            wzList += '<div id="imgPreview"></div>' +
+                                '<div class="am-form-group am-form-file">' +
+                                '<button type="button" class="am-btn am-btn-default am-btn-sm">' +
+                                '<i class="am-icon-cloud-upload"></i>请上传图片</button>' +
+                                '<input type="file" onchange="previewFile()" multiple></div>'
+                            wzList += '<div id="imgPreview1">'
+                            for (var j = 0; j < d.Images.length; j++) {
+                                wzList += '<img style="width: 50px" src="' + d.Images[j].ImagePath + '"/>'
+                            }
+                            wzList += '</div>';
+
+                        }
+                    }
+                    if (status == "已完成") {
+                        wzList += '<ul><li>' +
+                            m.GoodName + '</li><li><span>' +
+                            m.Qty + '</span>' +
+                            m.UnitName + '</li><li>' +
+                            m.Remark + '</li><li class="bohui2"><span>' +
+                            m.CheckStatus + '</span></li></ul>'
+                        if (i == goods.length - 1 || goods.length == 0) {
+                            wzList += '<div id="imgPreview1">'
+                            for (var j = 0; j < d.Images.length; j++) {
+                                wzList += '<img  style="width: 50px" src="' + d.Images[j].ImagePath + '"/>'
+                            }
+                            wzList += '</div>';
+                        }
+                    }
+                }
+                $("#wzList").html(wzList);
+
+                const rs = agree.split(',');
+                for (var i = 0; i < rs.length; i++) {
+                    $('#radio' + rs[i]).attr('checked', 'checked')
+                }
+
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+</script>
+</body>
+
+</html>

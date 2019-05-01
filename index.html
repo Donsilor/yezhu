@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/amazeui.min.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+		<script type="text/javascript" src="js/amazeui.min.js" ></script>
+		<title>城主俱乐部</title>
+	</head>
+	<style>
+		.shenqing{
+			width: 100%;
+			height: auto;
+			min-height: 3rem;
+			overflow: hidden;
+		}
+		
+		.shenqing a{
+			display: block;
+			height: 4rem;
+			width: 80%;
+			text-align: center;
+			color: #222;
+			background: #DAA520;
+			border-radius: 5px;
+			line-height: 4rem;
+			border: 0;
+			margin-top: 4rem;
+			margin-left: 10%;
+			font-size: 1.3rem;
+		}
+		.indlogo{ position: fixed; bottom:2rem; width:100%; height:6rem; text-align:center;}
+		.indlogo img{ height:100%;}
+	</style>
+	<body style="background: #D7D7D7;">
+		<!--banner-->
+		<div data-am-widget="slider" class="am-slider am-slider-a1" data-am-slider='{"directionNav":false}'>
+			<ul class="am-slides">
+				<li>
+					<img src="images/banner1.jpg">
+
+				</li>
+				<li>
+					<img src="images/banner2.jpg">
+
+				</li>
+				<li>
+					<img src="images/banner3.jpg">
+
+				</li>
+				<li>
+					<img src="images/banner4.jpg">
+
+				</li>
+                <li>
+					<img src="images/banner5.jpg">
+
+				</li>
+			</ul>
+		</div>
+		
+		<div class="shenqing">
+		<a href="xinzeng1.html">我要申请</a>
+		
+		
+		<a href="index1.html">查看我的申请</a>
+		
+		</div>
+        
+        <div class="indlogo">
+           <img src="images/logo.png">
+        </div>
+
+	</body>
+
+	<script src="js/common.js"></script>
+	<script>
+        const userID  = getQueryString('userID')
+        const openid  = getQueryString('openid')
+        const userName  = getQueryString('userName')
+        const userType  = getQueryString('userType')
+        setCookie('userID', userID)
+        setCookie('openid', openid)
+        setCookie('userType', userType)
+        setCookie('user', JSON.stringify({userID:userID, openid:openid, userName:userName, userType:userType}))
+</script>
+</html>

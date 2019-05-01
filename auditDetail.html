@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css/amazeui.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/sh_xiangqing.css"/>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/amazeui.min.js"></script>
+    <title>审核详情</title>
+    
+    <style>
+		.shenqing{
+			width: 100%;
+			height: auto;
+			min-height: 3rem;
+		}
+		.shenqing a{
+			display: block;
+			height: 3rem;
+			width: 60%;
+			text-align: center;
+			color: #222;
+			background: #DAA520;
+			border-radius: 5px;
+			line-height: 3rem;
+			border: 0;
+			font-size: 1.5rem;
+			margin:auto;
+		}
+	</style>
+    
+</head>
+
+<body style="background: #D7D7D7;">
+<!--<div class="s_tab">-->
+<!--<li class="s_tab_active">待审核</li>-->
+<!--<li>已驳回</li>-->
+<!--<li>待签收</li>-->
+<!--<li>已完成</li>-->
+<!--</div>-->
+
+<div class="show_tab">
+    <div class="show_tabs">
+
+        <div class="s_tabss">
+            <!--<ul>-->
+                <!--<a>-->
+                    <!--<li>-->
+                        <!--<p>20180520</p>-->
+                        <!--<p>体育</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<p>羽毛球比赛</p>-->
+                        <!--<p>2018.5.30-2018.5.31</p>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                        <!--<p style="color: #FF0000;">已完成</p>-->
+                    <!--</li>-->
+                <!--</a>-->
+            <!--</ul>-->
+        </div>
+
+        <div class="xz_show">
+            <p id="description">活动说明：为鼓励业主锻炼身体，建立良好邻里关系，申请举办羽毛球友谊赛</p>
+            <p id="userQty">活动人数：50人</p>
+            <p><span id="telna">联系人：张三</span><span id="telph">联系电话：15188889999</span></p>
+            <p>所需物资：</p>
+            <div class="wang wang3" id="wzList">
+                <ul>
+
+                    <li><b>物资名称</b></li>
+                    <li><b>物资数量</b></li>
+                    <li><b>物资备注</b></li>
+                    <li></li>
+                </ul>
+                <!--<ul>-->
+
+                    <!--<li>城主饭局</li>-->
+                    <!--<li><span>1</span>场</li>-->
+                    <!--<li>备注</li>-->
+                    <!--<li class="bohui2"><span>已签收</span></li>-->
+                <!--</ul>-->
+                <!--<ul>-->
+
+                    <!--<li>太阳伞</li>-->
+                    <!--<li><span>20</span>顶</li>-->
+                    <!--<li>备注</li>-->
+                    <!--<li class="bohui2"><font>未签收</font></li>-->
+                <!--</ul>-->
+                <!--<ul>-->
+                    <!--<li>城主饭局</li>-->
+                    <!--<li><span>1</span>场</li>-->
+                    <!--<li>备注</li>-->
+                    <!--<li class="bohui2"><span>已签收</span></li>-->
+                <!--</ul>-->
+
+
+            </div>
+
+
+            <!--上传缩略图-->
+            <div id="imgPreview" data-am-widget="gallery" class="am-gallery am-gallery-default"
+                 data-am-gallery="{ pureview: true }"></div>
+            <!--<img src="images/u114.jpg"/>-->
+            <!--<img src="images/u114.jpg"/>-->
+            <!--<img src="images/u114.jpg"/>-->
+            <!--<img src="images/u114.jpg"/>-->
+            <!--</div>-->
+            <!--<div class="shenqing"><a href="javascript:void(0)" onclick="yanshou()">验收</a></div>-->
+
+
+            <div class="xz_peihe">
+                <p>愿意配合事项：</p>
+                <li class="c_radio"><input type="checkbox" name="type" id="radio1" class="radio" disabled="disabled"
+                                           checked="checked"><label for="a" class="radio">在朋友圈发布相关宣传海报/微推/照片；</label>
+                </li>
+                <li class="c_radio"><input type="checkbox" name="type" id="radio2" class="radio"
+                                           disabled="disabled"><label
+                        for="a" class="radio">推介亲友注册凤凰通；</label></li>
+                <li class="c_radio"><input type="checkbox" name="type" id="radio3" class="radio" disabled="disabled"
+                                           checked="checked"><label for="a" class="radio">推荐亲友到访销售中心，并注册积分宝；</label></li>
+            </div>
+        </div>
+
+        <div class="sh_yj"  id="sh_yj1" style="display: none">
+            <input type="text" name="" id="ApproverContent1" placeholder="请填写初审意见"/>
+            <input type="text" name="" id="ApproverContent2" placeholder="请填写复审意见"/>
+            <input type="text" name="" id="ApproverContent3" placeholder="请填写终审意见"/>
+
+            <a href="#" class="xz_next" onclick="ActivityApprover(1)">同意</a>
+            <a href="#" class="xz_next2" onclick="ActivityApprover(-1)">驳回</a>
+        </div>
+
+        <div class="sh_yj" id="sh_yj2" style="display: none">
+            <p id="ApproverContent11">初审意见：</p>
+            <p id="ApproverContent22">复审意见:</p>
+            <p id="ApproverContent33">终审意见：</p>
+
+        </div>
+    </div>
+</div>
+
+
+<!--切换js-->
+<script>
+    $('.s_tab li').click(function () {
+        var i = $(this).index();//下标第一种写法
+        //var i = $('tit').index(this);//下标第二种写法
+        $(this).addClass('s_tab_active').siblings().removeClass('s_tab_active');
+        $('.show_tab .show_tabs').eq(i).show().siblings().hide();
+    });
+</script>
+
+<!--上传缩略图JS-->
+<script src="js/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script type="text/javascript">
+
+    const user = JSON.parse(getCookie('user'))
+    const userType = getCookie('userType')
+    var activity = {};
+    function previewFile() {
+        var file = document.querySelector('input[type=file]').files[0];
+        const reader = new FileReader();
+        if (!reader) {
+            return;
+        }
+        ;
+        console.log(file)
+        var objUrl = getObjectURL(file);
+        if (objUrl) {
+            var objUrl = String(objUrl);
+            var img = '<div class="upimg"><img src="' + objUrl + '"/><span class="deleimg">X</span></div>';
+            $('#imgPreview').append(img);
+        }
+
+        var fd = new FormData();
+        fd.append('file', file);
+        fd.append("activityid", getQueryString('id'));
+        $.ajax({
+            url: getUrl("/api/ActivityCenter/ImgUpload"),
+            type: "POST",
+            data: fd,
+            processData: false,
+            contentType: false
+        });
+    }
+
+
+    getActivityApplyGet();
+
+    function ActivityApprover(ret) {
+
+        const UserID = getCookie('userID')
+
+        var text = '';
+        if (user.userType == '1') {
+            text = $('#ApproverContent1').val();
+        }
+        if (user.userType == '2') {
+            text = $('#ApproverContent2').val();
+        }
+        if (user.userType == '3') {
+            text = $('#ApproverContent3').val();
+        }
+
+        if (user.userType == '1' && $('#ApproverContent1').val() == "") {
+            toastr.warning("初审不能为空")
+            return
+        }
+        if (user.userType == '2' && $('#ApproverContent2').val() == "") {
+            toastr.warning("复审不能为空")
+            return
+        }
+        if (user.userType == '3' && $('#ApproverContent3').val() == "") {
+            toastr.warning("终审不能为空")
+            return
+        }
+        //取消上传的缩略图
+        $('#imgPreview').on('click', '.am-icon-close', function () {
+            $(this).parent().remove();
+        });
+
+        const goods = getGoods();
+
+        const req = {
+            "UserID": UserID || '', //微信OpenID
+            "NickName": user.NickName || '',  //审批人名称
+            "ActivityID": getQueryString('id') || '',        //活动ID
+            "Goods": goods,
+            "ApproverStep": user.userType == '1' ? "初审" : user.userType == '2' ? '复审' : user.userType == 3 ? '终审' : '', //当前审批节点:初审、复审、终审
+            "ApproverContent": text, //
+            "ApproverResult": ret       //审批通过 1  驳回：-1
+        }
+        console.log(req)
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityApprover'),
+            contentType: 'application/json',
+            data: JSON.stringify(req),
+            success: function (data) {
+                if (data.Code == 200) {
+                    toastr.success("提交成功")
+                    setTimeout(function () {
+                        location.href = "auditIndex.html"
+                    }, 1000)
+                } else {
+                    toastr.error(data.Message)
+                }
+
+            },
+            error: function () {
+                toastr.error("提交失败")
+            }
+        });
+    }
+
+
+    function getObjectURL(file) {
+        var url = null;
+        if (window.createObjectURL != undefined) { // basic
+            url = window.createObjectURL(file);
+        } else if (window.URL != undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file);
+        } else if (window.webkitURL != undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file);
+        }
+        return url;
+    }
+    //获取单个活动信息
+    function getActivityApplyGet() {
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityApplyGet'),
+            contentType: 'application/json',
+            data: JSON.stringify({"activityId": getQueryString('id')}),
+            success: function (data) {
+
+                const d = data.Result;
+                activity = d;
+                console.log(d)
+
+                var activityList = '';
+
+                var ActivityName = d.ActivityName;
+                var ActivityType = d.ActivityType;
+                var startTime = d.ActivityStartDT.slice(0, 10);
+                var endTime = d.ActivityEndDT.slice(0, 10);
+                var _status = d.Status;
+                var status = "";
+                var description = d.Description;
+                var userQty = d.UserQty;
+                var goods = d.Goods;
+                var agree = d.AgreeRule;
+				//新加的联系人和电话
+				var telph = d.ContactPhone;
+				var telna = d.ContactUser;
+
+                if (_status == '1') {
+                    status = "待审核"
+                } else if (_status == '2') {
+                    status = userType == '1' ? "审核中" : (userType == '2' || userType == '3') ? "待审核" : ''
+                } else if (_status == '3') {
+                    status = (userType == '1' || userType == '2') ? "审核中" : userType == '3' ? "待审核" : ''
+                } else if (_status == '4') {
+                    status = '待验收'
+                } else if (_status == '5') {
+                    status = '已完成'
+                } else if (_status == '-1') {
+                    status = '已驳回'
+                }
+
+                activityList += '<ul><a><li><p>' +
+                    startTime + '</p><p>' +
+                    ActivityType + '</p></li><li><p>' +
+                    ActivityName + '</p><p>' +
+                    startTime + '~' + endTime + '</p></li><li><p style="color: #FF0000;">' +
+                    status + '</p></li></a></ul>';
+
+                $(".s_tabss").html(activityList);
+
+                $("#description").text("活动说明：" + description);
+                $("#userQty").text("活动人数：" + userQty + "人");
+				$("#telph").text("联系电话：" + telph);
+				$("#telna").text("联系人：" + telna);
+
+                $('#ApproverContent1').val(d.ApproverContent1);
+                $('#ApproverContent11').text("初审意见：" + d.ApproverContent1);
+                $('#ApproverContent2').val(d.ApproverContent2);
+                $('#ApproverContent22').text("复审意见：" + d.ApproverContent2);
+                $('#ApproverContent3').val(d.ApproverContent3);
+                $('#ApproverContent33').text("终审意见：" + d.ApproverContent3);
+                console.log(user.userType !== '1', user.userType)
+                if (user.userType !== '1') {
+                    $('#ApproverContent1').attr('disabled', true);
+                }
+                if (user.userType !== '2') {
+                    $('#ApproverContent2').attr('disabled', true);
+                }
+                if (user.userType !== '3') {
+                    $('#ApproverContent3').attr('disabled', true);
+                }
+
+                if (status == "待审核") {
+                    $('#sh_yj1').css('display', 'block');
+                }
+                if (status == "审核中") {
+                    $('#sh_yj2').css('display', 'block');
+                }
+
+                var wzList = '';
+                if (status == "待审核" || status == "审核中") {
+                    wzList = '<ul><li><b>物资名称</b></li><li><b>物资数量</b></li><li><b>物资备注</b></li><li><b>单价</b></li><li><b></b></li></ul>';
+                } else if (status == "待签收" || status == "已完成") {
+                    wzList = '<ul><li><b>物资名称</b></li><li><b>物资数量</b></li><li><b>物资备注</b></li><li><b>单价</b></li><li><b>状态</b></li></ul>';
+                }
+
+                var totalPrice = 0;
+                for (var i = 0; i < goods.length; i++) {
+                    const m = goods[i];
+                    totalPrice += m.Qty * m.Price;
+                    if (status == "待审核") {
+                        const id = m.Id;
+
+                        wzList += '<ul><li>' + m.GoodName + '<input type="text" name="wz_Id" value="' + id + '" style="display:none"/></li>' +
+                            '<li><input type="text" name="num_' + id + '" value="' + m.Qty + '" />' + m.UnitName + '' +
+                            '<input type="text" name="unit_' + id + '" value="' + m.UnitName + '" style="display:none"/></li>' +
+                            '<li><input type="text" name="backup_' + id + '" value="' + m.Remark + '" /></li>' +
+                            '<li><input type="text" name="price_' + id + '" value="' + m.Price + '" /></li></ul>'
+
+                        if (i == goods.length - 1 || goods.length == 0) {
+                            wzList += '<ul><li>合计</li><li></li><li>' + goods.length + '项</li><li id="totalPrice">' + totalPrice + '元</li><a href="javascript:void(0)" onclick="calculate()">计算</a></ul>'
+                        }
+                    }
+                    if (status == "审核中") {
+                        wzList += '<ul><li>' + m.GoodName + '</li>' +
+                            '<li><span>' + m.Qty + '</span>' + m.UnitName + '</li>' +
+                            '<li><span>' + m.Remark + '</span></li>' +
+                            '<li><span>' + m.Price + '</span></li></ul>'
+                        if (i == goods.length - 1 || goods.length == 0) {
+                            wzList += '<ul><li>合计</li><li></li><li>' + goods.length + '项</li><li>' + totalPrice + '元</li></ul>'
+                        }
+                    }
+                    if (status == "待验收") {
+                        wzList += '<ul><li>' + m.GoodName + '</li><li><span>' + m.Qty +
+                            '</span>' + m.UnitName + '</li><li>' + m.Remark + '</li><li>' + m.Price + '</li>'
+
+                        if (m.CheckStatus == '未签收') {
+                            wzList += '<li class="bohui2"><font>未签收</font></li></ul>'
+                        } else {
+                            wzList += '<li class="bohui2">' + m.CheckStatus + '</li></ul>'
+                        }
+                        if (i == goods.length - 1 || goods.length == 0) {
+                            wzList += '<ul><li>合计</li><li></li><li>' + goods.length + '项</li><li>' + totalPrice + '元</li></ul>'
+                            wzList += '<div class="am-form-group am-form-file">' +
+                                '<button type="button" class="am-btn am-btn-default am-btn-sm">' +
+                                '<i class="am-icon-cloud-upload"></i> 请上传图片</button>' +
+                                '<input type="file" onchange="previewFile()" multiple></div>'
+
+                            wzList += '<div id="imgPreview1">'
+                            for (var j = 0; j < d.Images.length; j++) {
+                                wzList += '<div class="upimg"><img src="' + d.Images[j].ImagePath + '"/><span class="deleimg" onclick="deleteImg('+d.Images[j].Id+')">X</span></div>'
+                            }
+                            wzList += '</div>';
+                            wzList += '<div class="shenqing"><a href="javascript:void(0)" onclick="yanshou('+d.Id+')">验收</a></div>'
+                        }
+                    }
+                    if (status == "已完成") {
+                        wzList += '<ul><li>' +
+                            m.GoodName + '</li><li><span>' +
+                            m.Qty + '</span>' +
+                            m.UnitName + '</li><li>' +
+                            m.Remark + '</li><li>' + m.Price + '</li>'
+                        if (m.CheckStatus == '未签收') {
+                            wzList += '<li class="bohui2"><font>未签收</font></li></ul>'
+                        } else {
+                            wzList += '<li class="bohui2">' + m.CheckStatus + '</li></ul>'
+                        }
+                        if (i == goods.length - 1 || goods.length == 0) {
+                            wzList += '<ul><li>合计</li><li></li><li>' + goods.length + '项</li><li>' + totalPrice + '元</li></ul>'
+
+                            wzList += '<div id="imgPreview1">'
+                            for (var j = 0; j < d.Images.length; j++) {
+                                wzList += '<div class="upimg"><img src="' + d.Images[j].ImagePath + '"/><span class="deleimg" onclick="deleteImg('+d.Images[j].Id+')">X</span></div>'
+                            }
+                            wzList += '</div>';
+                        }
+                    }
+                }
+
+                $("#wzList").html(wzList);
+
+                const rs = agree.split(',');
+                for (var i = 0; i < rs.length; i++) {
+                    $('#radio' + rs[i]).attr('checked', 'checked')
+                }
+
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+    
+    function deleteImg(imgId) {
+        console.log('====================', imgId)
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ImageDel'),
+            contentType: 'application/json',
+            data: JSON.stringify({imageid: imgId}),
+            success: function (data) {
+                if (data.Code == 200) {
+                    getActivityApplyGet();
+                } else {
+                    toastr.error(data.Message)
+                }
+            },
+            error: function () {
+                toastr.error("网络错误")
+            }
+        });
+    }
+
+    function yanshou(activityId) {
+        const UserID = getCookie('userID')
+        $.ajax({
+            method: 'POST',
+            url: getUrl('/api/ActivityCenter/ActivityComplete'),
+            contentType: 'application/json',
+            data: JSON.stringify({UserID: UserID, ActivityId: activityId}),
+            success: function (data) {
+                if (data.Code == 200) {
+                    toastr.success(data.Message)
+                    getActivityApplyGet();
+                } else {
+                    toastr.error(data.Message)
+                }
+
+            },
+            error: function () {
+                toastr.error("网络错误")
+            }
+        });
+    }
+
+
+    function getGoods() {
+        const goods = {};
+        $("input[name='wz_Id']").each(function () {
+            const key = $(this).val();
+            const val1 = $("input[name='num_" + key + "']")
+            const val2 = $("input[name='backup_" + key + "']")
+            const val3 = $("input[name='unit_" + key + "']")
+            const val4 = $("input[name='price_" + key + "']")
+
+            goods[key] = {
+                GoodName: key,
+                UnitName: val3[0].value,
+                Qty: val1[0].value,
+                Remark: val2[0].value,
+                Price: val4[0].value
+            }
+        });
+
+        const _activity = [];
+        for (var i = 0; i < activity.Goods.length; i++) {
+            const tmp = activity.Goods[i];
+            const g = goods[tmp.Id];
+            tmp.Qty = g.Qty
+            tmp.Price = g.Price
+            tmp.Remark = g.Remark
+            _activity.push(tmp)
+        }
+
+        return _activity
+    }
+
+
+    function calculate() {
+        var totalPrice = 0;
+        const goods = getGoods();
+        for (var i = 0; i < goods.length; i++) {
+            const d = goods[i]
+            totalPrice += d.Price * d.Qty
+        }
+
+        $("#totalPrice").text(totalPrice)
+    }
+</script>
+
+</body>
+
+</html>
